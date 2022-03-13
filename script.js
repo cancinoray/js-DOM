@@ -7,17 +7,24 @@ function inputLength() {
 }
 
 function createListElements() {
-  var div = document.createElement("div");
+  //declaration of the variable reference to the address of the target node.
   var li = document.createElement("li");
   var delButton = document.createElement("button");
-  div.classList.add("wrapper");
-  ul.appendChild(div);
-  div.append(li, delButton);
-  li.classList.add("taskClass");
+
+  //appending all the created childred to the parent element
+  ul.append(li, delButton);
+
+ //appending the text to the li tag
   li.appendChild(document.createTextNode(input.value));
-  input.value = "";
+ 
+  //creating the class and the button itself
   delButton.classList.add("delClass");
   delButton.innerHTML = "Del";
+ 
+  
+ //clearing the input field
+  input.value = "";
+  
 }
 
 function addListAfterClick() {
@@ -33,7 +40,7 @@ function addListAfterKeypress(event) {
 }
 
 function doneTask(task) {
-  if (task.target.tagName === "LI") {
+  if (task.target.tagName === "LI") { //For some reason, the function node.tagName() (where you replace node with the node object) always returns letters in UPPERCASE. JavaScript is also case-sensitive, meaning the character "A" and the character "a" are totally different.
     task.target.classList.toggle("done");
   }
 }
